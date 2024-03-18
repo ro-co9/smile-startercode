@@ -1,5 +1,5 @@
 body {
-    margin: 1px 1px 1px 15px;
+    margin: 1px 1px 1px 1px;
     padding: 1px;
     font-family: Tahoma;
     text-align: left;
@@ -30,6 +30,17 @@ a:hover {
     cursor:pointer;
 }
 
+.flash-container{
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+    line-height: 50px;
+    font-style:normal;
+    font-size: 20px;
+    margin: 10px;
+    background-color: rgb(186, 186, 186);
+    color: red;
+}
 .posttable { 
     width : 100%;
     margin: 0px;

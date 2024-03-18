@@ -4,6 +4,9 @@ Requirements.txt is updated on Aug 2023
 
 Includes all tests (unittest, pytest, selenium)
 
+Roberto Correa
+DS + CS
+
 ------------------------
 ## Running the application
 -----------------------

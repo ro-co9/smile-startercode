@@ -17,7 +17,8 @@
                     <p>{{ error }}</p>
                 {% endfor %}
                 <!-- TODO: (milestone1) Include the form item for the post's `body`. Apply appropriate styling for the `body`form  item.  -->  
-                {{ form.body }}
+                {{ form.body.label }}<br>
+                {{ form.body(class="formbody") }}
                 <!-- TODO: (milestone 1) Display the error messages of the `body` field validator (if there are any validation errors).   -->  
                 {% for error in form.body.errors %}
                     <p>{{ error }}</p>
@@ -25,7 +26,8 @@
             </div>
             
             <!-- TODO: (milestone1) Include the form item for `happiness_level` selection. Apply appropriate styling for the `happiness_level` form item.  -->  
-            {{ form.happiness_level }}
+            {{ form.happiness_level.label }}
+            {{ form.happiness_level(class="formselect") }}
             <!-- TODO: (milestone2) Include the form item for `tag` selection.   -->  
 
             {{ form.submit(class="button") }}

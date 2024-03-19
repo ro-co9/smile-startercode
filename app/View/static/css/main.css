@@ -1,5 +1,5 @@
 body {
-    margin: 1px 1px 1px 1px;
+    margin: 1px 1px 1px 15px;
     padding: 1px;
     font-family: Tahoma;
     text-align: left;
@@ -95,4 +95,27 @@ a:hover {
 .likebtn:hover {
     background-image: url("..//img//like_hover.png");
     cursor:pointer;
+}
+
+.formtitle{
+    font-size: 16px;
+    padding: 6px;
+    width: 64%;
+    margin: 10px 0px 16px 4px;
+}
+
+.formbody{
+    
+    width: 64%;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px 0px 16px 4px;
+    min-height: 100px;
+}
+
+.formselect{
+    height: 28px;
+    width: 9%;
+    font-size: 16px;
+    padding: 5px;
 }

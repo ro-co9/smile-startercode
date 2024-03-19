@@ -26,7 +26,10 @@ def index():
 def postsmile():
     pform = PostForm()
     if pform.validate_on_submit():
+            selectedTags = pform.tag.data
             newPost = Post(title = pform.title.data, body = pform.body.data, happiness_level = pform.happiness_level.data)
+            for tag in selectedTags:
+                newPost.tags.append(tag)
             db.session.add(newPost)
             db.session.commit()
             flash("Your post has been created. Post title: " + pform.title.data)

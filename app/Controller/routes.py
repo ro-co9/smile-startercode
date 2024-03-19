@@ -1,7 +1,7 @@
 from __future__ import print_function
 import sys
 from flask import Blueprint
-from app.Controller.forms import PostForm
+from app.Controller.forms import PostForm, SortForm
 from app.Model.models import Tag, postTags
 from flask import render_template, flash, redirect, url_for, request
 from config import Config
@@ -16,10 +16,22 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
 
 @bp_routes.route('/', methods=['GET'])
-@bp_routes.route('/index', methods=['GET'])
+@bp_routes.route('/index', methods=['GET', 'POST'])
 def index():
-    posts = Post.query.order_by(Post.timestamp.desc())
-    return render_template('index.html', title="Smile Portal", posts=posts.all())
+    sendPosts = Post.query.order_by(Post.timestamp.desc())
+    sform = SortForm()
+    if sform.validate_on_submit():
+        sort = int(sform.sort.data)
+        if sort == 4:
+            sendPosts = Post.query.order_by(Post.happiness_level.desc())
+        elif sort == 3:
+            sendPosts = Post.query.order_by(Post.likes.desc())
+        elif sort == 2:
+            sendPosts = Post.query.order_by(Post.title.desc())
+        elif sort == 1:
+            sendPosts = Post.query.order_by(Post.timestamp.desc())
+
+    return render_template('index.html', title="Smile Portal", form=sform, posts=sendPosts.all())
 
 
 @bp_routes.route('/postsmile', methods=['GET', 'POST'])

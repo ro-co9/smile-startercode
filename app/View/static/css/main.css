@@ -119,6 +119,13 @@ a:hover {
     font-size: 16px;
     padding: 5px;
 }
+.formcontainer{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+}
+
 
 .postlist{
     display: flex;

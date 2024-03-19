@@ -135,6 +135,13 @@ a:hover {
 }
 
 
+.tagitem{
+    background-color: white;
+    border: 2px solid black;
+    padding: 3px;
+    text-align: center;
+}
+
 @media screen and (min-width: 1200px) {
     .post-box{
         width: 32%;

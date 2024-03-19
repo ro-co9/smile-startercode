@@ -31,3 +31,10 @@ def postsmile():
             flash("Your post has been created. Post title: " + pform.title.data)
             return redirect(url_for('routes.index'))
     return render_template('create.html', form=pform)
+
+@bp_routes.route('/like/<post_id>', methods=['POST'])
+def like(post_id):
+    getPost = Post.query.filter_by(id=post_id).first()
+    getPost.likes += 1
+    db.session.commit()
+    return redirect(url_for('routes.index'))

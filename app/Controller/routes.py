@@ -2,6 +2,7 @@ from __future__ import print_function
 import sys
 from flask import Blueprint
 from app.Controller.forms import PostForm
+from app.Model.models import Tag, postTags
 from flask import render_template, flash, redirect, url_for, request
 from config import Config
 

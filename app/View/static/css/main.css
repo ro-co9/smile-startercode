@@ -166,3 +166,24 @@ a:hover {
         width: 99%;
     }
 }
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 60%;
+    font-size: 20px;
+}
+
+
+.register-input {
+    height: 36px; 
+    margin-top: 4px;
+    margin-bottom: 18px;
+}
+
+.register-button{
+    width: 70px;
+    padding: 3px;
+}
+

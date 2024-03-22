@@ -2,7 +2,30 @@
 
 {% block content %}
     <h1>Register</h1>
-
+    {% if form.errors %}
+                {% for error in form.errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+    {% endif %}
     <!-- TODO: (milestone 3) Include the template for "user registration" form here..  -->
-    
+    {% if form %}
+
+            <form method="post" action="{{ url_for('auth.register') }}" class="register-form">
+                {{ form.hidden_tag() }}
+
+     
+        
+                {{ form.username.label }} {{ form.username(class="register-input") }}
+           
+                {{ form.email.label }} {{ form.email(class="register-input") }}
+         
+                {{ form.password.label }} {{ form.password(class="register-input") }}
+       
+           
+                {{ form.password2.label }} {{ form.password2(class="register-input") }}
+         
+
+                {{ form.submit(class="register-button") }}
+            </form>
+    {% endif %}
 {% endblock %}

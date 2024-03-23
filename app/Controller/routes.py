@@ -25,14 +25,24 @@ def index():
     sform = SortForm()
     if sform.validate_on_submit():
         sort = int(sform.sort.data)
-        if sort == 4:
-            sendPosts = Post.query.order_by(Post.happiness_level.desc())
-        elif sort == 3:
-            sendPosts = Post.query.order_by(Post.likes.desc())
-        elif sort == 2:
-            sendPosts = Post.query.order_by(Post.title.desc())
-        elif sort == 1:
-            sendPosts = Post.query.order_by(Post.timestamp.desc())
+        if sform.only_mine.data:
+            if sort == 4: 
+                sendPosts = current_user.get_user_posts().order_by(Post.happiness_level.desc())
+            elif sort == 3:
+                sendPosts = current_user.get_user_posts().order_by(Post.likes.desc())
+            elif sort == 2:
+                sendPosts = current_user.get_user_posts().order_by(Post.title.desc())
+            elif sort == 1:
+                sendPosts = current_user.get_user_posts().order_by(Post.timestamp.desc())
+        else:
+            if sort == 4:
+                sendPosts = Post.query.order_by(Post.happiness_level.desc())
+            elif sort == 3:
+                sendPosts = Post.query.order_by(Post.likes.desc())
+            elif sort == 2:
+                sendPosts = Post.query.order_by(Post.title.desc())
+            elif sort == 1:
+                sendPosts = Post.query.order_by(Post.timestamp.desc())
 
     return render_template('index.html', title="Smile Portal", form=sform, posts=sendPosts.all())
 

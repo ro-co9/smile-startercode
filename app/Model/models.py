@@ -17,6 +17,8 @@ class Post(db.Model):
     likes = db.Column(db.Integer, default = 0)
     happiness_level = db.Column(db.Integer, default = 3)
     tags = db.relationship('Tag', secondary = postTags, primaryjoin=(postTags.c.post_id == id), backref=db.backref('postTags', lazy='dynamic'), lazy='dynamic')
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
     def get_tags(self):
         return self.tags
 
@@ -31,6 +33,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(64), unique=True, index = True)
     email = db.Column(db.String(120), unique=True, index = True)
     password_hash = db.Column(db.String(128))
+    posts = db.relationship('Post', backref='writer', lazy='dynamic', overlaps="posts")
 
     def __repr__(self):
         return '<User id: {} Username: {}>'.format(self.id,self.username)
@@ -40,6 +43,11 @@ class User(db.Model, UserMixin):
     
     def get_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    def get_user_posts(self):
+        return self.posts
+
+
 
 @login.user_loader
 def load_user(id):

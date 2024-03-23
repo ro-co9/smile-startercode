@@ -205,3 +205,18 @@ a:hover {
     align-items: center;
     margin-bottom: 20px;
 }
+
+
+#post-username{
+    color: red;
+    text-transform: uppercase;
+    padding-left: 10px;
+}
+
+
+.post-user-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7px;
+}
+

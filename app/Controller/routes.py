@@ -4,6 +4,7 @@ from flask import Blueprint
 from app.Controller.forms import PostForm, SortForm
 from app.Model.models import Tag, postTags
 from flask import render_template, flash, redirect, url_for, request
+from flask_login import current_user, login_required
 from config import Config
 
 
@@ -16,7 +17,9 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
 
 @bp_routes.route('/', methods=['GET'])
+
 @bp_routes.route('/index', methods=['GET', 'POST'])
+@login_required
 def index():
     sendPosts = Post.query.order_by(Post.timestamp.desc())
     sform = SortForm()
@@ -35,6 +38,7 @@ def index():
 
 
 @bp_routes.route('/postsmile', methods=['GET', 'POST'])
+@login_required
 def postsmile():
     pform = PostForm()
     if pform.validate_on_submit():
@@ -49,6 +53,7 @@ def postsmile():
     return render_template('create.html', form=pform)
 
 @bp_routes.route('/like/<post_id>', methods=['POST'])
+@login_required
 def like(post_id):
     getPost = Post.query.filter_by(id=post_id).first()
     getPost.likes += 1

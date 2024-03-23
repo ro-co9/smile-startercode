@@ -167,7 +167,7 @@ a:hover {
     }
 }
 
-.register-form{
+.auth-form{
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -176,14 +176,32 @@ a:hover {
 }
 
 
-.register-input {
+.auth-input {
     height: 36px; 
     margin-top: 4px;
     margin-bottom: 18px;
 }
 
-.register-button{
+.auth-button{
     width: 70px;
     padding: 3px;
 }
 
+
+#login-form{
+    height: 29%;
+}
+
+.auth-login-button {
+   height: 50%;
+   width: 5%;
+   border: 2px solid gray
+}
+
+
+
+.login-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}

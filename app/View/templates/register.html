@@ -15,17 +15,17 @@
 
      
         
-                {{ form.username.label }} {{ form.username(class="register-input") }}
+                {{ form.username.label }} {{ form.username(class="auth-input") }}
            
-                {{ form.email.label }} {{ form.email(class="register-input") }}
+                {{ form.email.label }} {{ form.email(class="auth-input") }}
          
-                {{ form.password.label }} {{ form.password(class="register-input") }}
+                {{ form.password.label }} {{ form.password(class="auth-input") }}
        
            
-                {{ form.password2.label }} {{ form.password2(class="register-input") }}
+                {{ form.password2.label }} {{ form.password2(class="auth-input") }}
          
 
-                {{ form.submit(class="register-button") }}
+                {{ form.submit(class="auth-button") }}
             </form>
     {% endif %}
 {% endblock %}

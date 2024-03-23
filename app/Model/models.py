@@ -1,6 +1,8 @@
 from datetime import datetime
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from app import login
 
 postTags = db.Table('postTags',
     db.Column('post_id', db.Integer, db.ForeignKey('post.id')),
@@ -24,7 +26,7 @@ class Tag(db.Model):
     def __repr__(self):
         return '<Course {},{}>'.format(self.id, self.name)
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index = True)
     email = db.Column(db.String(120), unique=True, index = True)
@@ -38,6 +40,10 @@ class User(db.Model):
     
     def get_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 
 
